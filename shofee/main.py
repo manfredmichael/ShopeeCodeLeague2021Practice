@@ -2,6 +2,9 @@ from functools import wraps
 from time import time, sleep
 import numpy as np
 
+import sys
+sys.setrecursionlimit(100_000)
+
 def timing(f):
     @wraps(f)
     def wrap(*args, **kw):
@@ -13,26 +16,26 @@ def timing(f):
         return result
     return wrap
 
-def get_valid_combination_count(beans, n, k):
-    valid_combination_counter = 0
-    for i in range(len(beans)-(n-1)):
-        combination = beans[i:i+n]
-        if sum(combination)/len(combination)>=k:
-            valid_combination_counter += 1 
-    return valid_combination_counter
+def get_valid_combination_count(beans, k, n=0, previous_sum=0):
+    if n >= len(beans):
+        return 0
+    
+    current_sum = (previous_sum + beans[n])
+    mean = current_sum/n
+    if mean >= k:
+        return 1 + get_valid_combination_count(beans, k, n+1, current_sum)
+    else:
+        return 0 + get_valid_combination_count(beans, k, n+1, current_sum)
 
 @timing
 def get_total_valid_combination(beans, k):
-    return sum([get_valid_combination_count(beans, n, k) for n in range(1, len(beans)+1)])
+    c = [get_valid_combination_count(beans[i:], k, n=1) for i in range(len(beans))]
+    return sum(c)
 
 def main():
-    test_case = [1, 1, 4, 5, 1, 4] 
+    test_case = [1, 1, 4, 5, 1, 4] * 1000
     result = get_total_valid_combination(test_case, 3)
     print(result)
 
 if __name__ == '__main__':
     main()
-
-
-
-
