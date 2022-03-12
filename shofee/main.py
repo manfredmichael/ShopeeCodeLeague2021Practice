@@ -4,7 +4,6 @@ import numpy as np
 
 import sys
 sys.setrecursionlimit(100_000)
-
 def timing(f):
     @wraps(f)
     def wrap(*args, **kw):
@@ -16,11 +15,11 @@ def timing(f):
         return result
     return wrap
 
-def get_valid_combination_count(beans, k, n=0, previous_sum=0):
-    if n >= len(beans):
+def get_valid_combination_count(beans, k, n=1, previous_sum=0):
+    if n > len(beans):
         return 0
     
-    current_sum = (previous_sum + beans[n])
+    current_sum = (previous_sum + beans[n-1])
     mean = current_sum/n
     if mean >= k:
         return 1 + get_valid_combination_count(beans, k, n+1, current_sum)
