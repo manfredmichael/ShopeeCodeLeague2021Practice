@@ -20,6 +20,10 @@ class Engineer:
         self.y = y
         self.signal = 0
 
+    def is_inside(self, hub, r):
+        return (self.x - hub.x)**2 + (self.y - hub.y)**2 < r**2 
+
+
 class Hub:
     def __init__(self, x, y):
         self.x = x
