@@ -27,7 +27,9 @@ class Engineer:
     def add_signal(self, hub, r):
         if self.is_inside(hub, r):
             self.signal += 1
-
+    
+    def reset(self):
+        self.signal = 0
 
 class Hub:
     def __init__(self, x, y):
