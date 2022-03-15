@@ -41,8 +41,20 @@ class SignalChecker:
     def get_nosignal_engineers(engineers):
         return len([e for e in engineers if e.signal != 1])
 
+def get_input(filename):
+    with open(filename, 'r') as f:
+        lines = [line.strip() for line in f.readlines()]
+    print(lines)
+    n_engineer = int(lines[0])
+    n_query = int(lines[n_engineer+2])
+    coor_engineers = [tuple(line.split(' ')) for line in lines[1:1+n_engineer]]
+    range_query = [tuple(line.split(' ')) for line in lines[n_engineer+3:n_engineer+3+n_query]]
+    coor_hubs = lines[n_engineer+1].split(' ')
+    return coor_hubs, coor_engineers, range_query
+
 def main():
-    result = None
+    coor_hubs, coor_engineers, range_query = get_input('testcase')
+
     print(result)
 
 if __name__=='__main__':
