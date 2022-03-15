@@ -22,7 +22,7 @@ class Engineer:
         self.signal = 0
 
     def is_inside(self, hub, r):
-        return (self.x - hub.x)**2 + (self.y - hub.y)**2 < r**2 
+        return (self.x - hub.x)**2 + (self.y - hub.y)**2 <= r**2 
 
     def add_signal(self, hub, r):
         if self.is_inside(hub, r):
