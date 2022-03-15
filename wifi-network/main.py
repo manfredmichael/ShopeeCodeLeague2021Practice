@@ -14,6 +14,7 @@ def timing(f):
         return result
     return wrap
 
+
 class Engineer:
     def __init__(self, x, y):
         self.x = x
@@ -32,6 +33,11 @@ class Hub:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+class SignalChecker:
+    @staticmethod
+    def get_nosignal_engineers(engineers):
+        return len([e for e in engineers if e.signal != 1])
 
 def main():
     result = None
