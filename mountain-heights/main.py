@@ -19,3 +19,19 @@ def timing(f):
 def find_all_grounds(terrain):
     ground_ids = [i for i, v in enumerate(terrain) if v == 1]
     return ground_ids
+
+def search(terrain, position, step):
+    highest_id = None
+
+    while True:
+        highest_id = position
+        if can_step_to(terrain, position, position + step):
+            position += step
+        else:
+            break
+    return highest_id
+
+
+
+
+
