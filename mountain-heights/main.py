@@ -43,6 +43,18 @@ def can_step_to(terrain, position, next_position):
             return True
     return False
 
+def find_peaks(terrain, ground_ids):
+    peak_ids = []
+    for ground_id in ground_ids:
+        left_peak = search_left(terrain, ground_id)
+        right_peak = search_right(terrain, ground_id)
+        if left_peak:
+            peak_ids.append(left_peak)
+        if right_peak:
+            peak_ids.append(right_peak)
+
+    peak_values = [terrain[peak_id] for peak_id in peak_ids]
+    return peak_ids, peak_values
 
 
 
