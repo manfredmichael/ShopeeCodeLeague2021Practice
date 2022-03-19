@@ -31,6 +31,12 @@ def search(terrain, position, step):
             break
     return highest_id
 
+def search_left(terrain, position):
+    return search(terrain, position, step=-1)
+
+def search_right(terrain, position):
+    return search(terrain, position, step=1)
+
 def can_step_to(terrain, position, next_position):
     if next_position >= 0 and next_position < len(terrain):
         if terrain[next_position] - terrain[position] == 1:
