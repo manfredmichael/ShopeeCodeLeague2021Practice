@@ -56,6 +56,7 @@ def find_peaks(terrain, ground_ids):
     peak_values = [terrain[peak_id] for peak_id in peak_ids]
     return peak_ids, peak_values
 
+@timing
 def find_highest_peak(terrain):
     ground_ids = find_all_grounds(terrain)
     peak_ids, peak_values = find_peaks(terrain, ground_ids)
