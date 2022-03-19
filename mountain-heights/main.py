@@ -66,3 +66,11 @@ def find_highest_peak(terrain):
     return -1, -1
 
 
+def main():
+    # terrain = [1, 2, 3, 2, 3, 4, 2, 3, 2, 5]
+    # terrain = [3, 2, 3, 2, 3, 4, 3, 2, 1, 4]
+    terrain = [3, 2, 3, 2, 3, 4, 3, 2, 5, 4]
+    result  = find_highest_peak(terrain)
+    print(result)
+
+main()
